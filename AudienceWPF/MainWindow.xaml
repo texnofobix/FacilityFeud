@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="203*" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,214,0,0" Name="panel1" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,214,0,0" Name="rectangle0" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>

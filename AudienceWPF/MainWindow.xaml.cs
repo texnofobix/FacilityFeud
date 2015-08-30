@@ -41,7 +41,7 @@ namespace AudienceWPF
         public void setNumAnswers(int n)
         {
             /*ImageBrush f = new ImageBrush(new BitmapImage(new Uri("/AudienceWPF;component/Resources/item bg.png")));
-            panel1.Fill = f;
+            rectangle0.Fill = f;
             rectangle1.Fill = f;
             rectangle2.Fill = f;
             rectangle3.Fill = f;

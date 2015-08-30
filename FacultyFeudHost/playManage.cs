@@ -13,16 +13,10 @@
 
     You should have received a copy of the GNU General Public License
     along with Faculty Feud.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -126,7 +120,7 @@ namespace FacultyFeudHost
 
         public void clearWindow()
         {
-            audience.audWnd.panel1.Fill = itemBg;
+            audience.audWnd.rectangle0.Fill = itemBg;
             audience.audWnd.a_1.Visibility = Visibility.Hidden;
             audience.audWnd.b_1.Visibility = Visibility.Visible;
             audience.audWnd.p1.Visibility = Visibility.Hidden;
@@ -265,72 +259,80 @@ namespace FacultyFeudHost
             audience.audWnd.Question.Content = QuestionManager.questions[qList.SelectedIndex].q;
         }
 
+        private void FlipAnswer(int ansIndex, ref System.Windows.Shapes.Rectangle blankBoardFlip, ref System.Windows.Controls.Label answerBox, ref System.Windows.Controls.Label blankBox, ref System.Windows.Controls.Label pointsBox)
+        {
+            //TODO: change function to return int of points
+            string answerText = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
+            blankBoardFlip.Fill = itemAnsBg;
+
+            answerBox.Content = answerText;
+            answerBox.FontSize = calcFontSize(answerText, 294);
+            answerBox.Visibility = Visibility.Visible;
+            
+            blankBox.Visibility = Visibility.Hidden;
+
+            pointsBox.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
+            pointsBox.Visibility = Visibility.Visible;
+            
+            //pointMade = true;
+
+        }
+
+        private void FlipBack(ref System.Windows.Shapes.Rectangle blankBoardFlip, ref System.Windows.Controls.Label answerBox, ref System.Windows.Controls.Label blankBox, ref System.Windows.Controls.Label pointBox)
+        {
+            blankBoardFlip.Fill = itemBg;
+            answerBox.Visibility = Visibility.Hidden;
+            blankBox.Visibility = Visibility.Visible;
+            pointBox.Visibility = Visibility.Hidden;
+        }
         private void a_CheckedChanged(object sender, EventArgs e)
         {
             if (leftInControl == false && rightInControl == false)
                 return; //no team in control?
             
             string q;
-            int qindex = 0;
+            int ansIndex = 0;
             bool pointMade = false;
+
             if (sender == a_1)
             {
+
                 if (a_1.Checked)
                 {
-                    qindex = 0;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
-                    audience.audWnd.panel1.Fill = itemAnsBg;
-                    audience.audWnd.a_1.Content = q;
-                    audience.audWnd.a_1.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_1.Visibility = Visibility.Visible;
-                    audience.audWnd.b_1.Visibility = Visibility.Hidden;
-                    audience.audWnd.p1.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
-                    audience.audWnd.p1.Visibility = Visibility.Visible;
+                    ansIndex = 0;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
                     pointMade = true;
                 }
                 else
                 {
-                    audience.audWnd.panel1.Fill = itemBg;
-                    audience.audWnd.a_1.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_1.Visibility = Visibility.Visible;
-                    audience.audWnd.p1.Visibility = Visibility.Hidden;
+                    FlipBack(ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
                 }
             }
             else if (sender == a_2)
             {
                 if (a_2.Checked)
                 {
-                    qindex = 1;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
-                    audience.audWnd.rectangle1.Fill = itemAnsBg;
-                    audience.audWnd.a_2.Content = q;
-                    audience.audWnd.a_2.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_2.Visibility = Visibility.Visible;
-                    audience.audWnd.b_2.Visibility = Visibility.Hidden;
-                    audience.audWnd.p2.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
-                    audience.audWnd.p2.Visibility = Visibility.Visible;
+                    ansIndex = 1;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
                     pointMade = true;
                 }
                 else
                 {
-                    audience.audWnd.rectangle1.Fill = itemBg;
-                    audience.audWnd.a_2.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_2.Visibility = Visibility.Visible;
-                    audience.audWnd.p2.Visibility = Visibility.Hidden;
+                    FlipBack(ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
                 }
             }
             else if (sender == a_3)
             {
                 if (a_3.Checked)
                 {
-                    qindex = 2;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 2;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle2.Fill = itemAnsBg;
                     audience.audWnd.a_3.Content = q;
                     audience.audWnd.a_3.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_3.Visibility = Visibility.Visible;
                     audience.audWnd.b_3.Visibility = Visibility.Hidden;
-                    audience.audWnd.p3.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p3.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p3.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -346,14 +348,14 @@ namespace FacultyFeudHost
             {
                 if (a_4.Checked)
                 {
-                    qindex = 3;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 3;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle3.Fill = itemAnsBg;
                     audience.audWnd.a_4.Content = q;
                     audience.audWnd.a_4.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_4.Visibility = Visibility.Visible;
                     audience.audWnd.b_4.Visibility = Visibility.Hidden;
-                    audience.audWnd.p4.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p4.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p4.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -369,14 +371,14 @@ namespace FacultyFeudHost
             {
                 if (a_5.Checked)
                 {
-                    qindex = 4;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 4;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle4.Fill = itemAnsBg;
                     audience.audWnd.a_5.Content = q;
                     audience.audWnd.a_5.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_5.Visibility = Visibility.Visible;
                     audience.audWnd.b_5.Visibility = Visibility.Hidden;
-                    audience.audWnd.p5.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p5.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p5.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -392,14 +394,14 @@ namespace FacultyFeudHost
             {
                 if (a_6.Checked)
                 {
-                    qindex = 5;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 5;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle5.Fill = itemAnsBg;
                     audience.audWnd.a_6.Content = q;
                     audience.audWnd.a_6.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_6.Visibility = Visibility.Visible;
                     audience.audWnd.b_6.Visibility = Visibility.Hidden;
-                    audience.audWnd.p6.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p6.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p6.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -415,14 +417,14 @@ namespace FacultyFeudHost
             {
                 if (a_7.Checked)
                 {
-                    qindex = 6;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 6;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle6.Fill = itemAnsBg;
                     audience.audWnd.a_7.Content = q;
                     audience.audWnd.a_7.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_7.Visibility = Visibility.Visible;
                     audience.audWnd.b_7.Visibility = Visibility.Hidden;
-                    audience.audWnd.p7.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p7.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p7.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -438,14 +440,14 @@ namespace FacultyFeudHost
             {
                 if (a_8.Checked)
                 {
-                    qindex = 7;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[qindex];
+                    ansIndex = 7;
+                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
                     audience.audWnd.rectangle7.Fill = itemAnsBg;
                     audience.audWnd.a_8.Content = q;
                     audience.audWnd.a_8.FontSize = calcFontSize(q, 294);
                     audience.audWnd.a_8.Visibility = Visibility.Visible;
                     audience.audWnd.b_8.Visibility = Visibility.Hidden;
-                    audience.audWnd.p8.Content = QuestionManager.questions[qList.SelectedIndex].p[qindex].ToString();
+                    audience.audWnd.p8.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
                     audience.audWnd.p8.Visibility = Visibility.Visible;
                     pointMade = true;
                 }
@@ -461,7 +463,7 @@ namespace FacultyFeudHost
             if (((CheckBox)sender).Checked && pointMade)
             {
                 cor.Play();
-                int pointsGained = (int)QuestionManager.questions[qList.SelectedIndex].p[qindex];
+                int pointsGained = (int)QuestionManager.questions[qList.SelectedIndex].p[ansIndex];
                 if (cbPointsDoubled.Checked)
                     pointsGained = pointsGained * 2;
 
@@ -493,11 +495,6 @@ namespace FacultyFeudHost
             }
 
             return fsz;
-        }
-
-        private void a_8_CheckedChanged(object sender, EventArgs e)
-        {
-          
         }
 
         private void timer1_Tick(object sender, EventArgs e)
