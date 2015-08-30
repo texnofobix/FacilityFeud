@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacultyFeudHost", "FacultyFeudHost\FacultyFeudHost.csproj", "{B144A3A2-D95F-4BA5-A09F-47ADAF0862C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacultyFeudClient", "FacultyFeudClient\FacultyFeudClient.csproj", "{5B2D04CB-9008-4FDA-BAB7-CC9D10A03D5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudienceWPF", "AudienceWPF\AudienceWPF.csproj", "{FB8E0362-BC67-4FF2-BF86-A9F2ED6C99D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B144A3A2-D95F-4BA5-A09F-47ADAF0862C9}.Debug|x86.ActiveCfg = Debug|x86
+		{B144A3A2-D95F-4BA5-A09F-47ADAF0862C9}.Debug|x86.Build.0 = Debug|x86
+		{B144A3A2-D95F-4BA5-A09F-47ADAF0862C9}.Release|x86.ActiveCfg = Release|x86
+		{B144A3A2-D95F-4BA5-A09F-47ADAF0862C9}.Release|x86.Build.0 = Release|x86
+		{5B2D04CB-9008-4FDA-BAB7-CC9D10A03D5D}.Debug|x86.ActiveCfg = Debug|x86
+		{5B2D04CB-9008-4FDA-BAB7-CC9D10A03D5D}.Debug|x86.Build.0 = Debug|x86
+		{5B2D04CB-9008-4FDA-BAB7-CC9D10A03D5D}.Release|x86.ActiveCfg = Release|x86
+		{5B2D04CB-9008-4FDA-BAB7-CC9D10A03D5D}.Release|x86.Build.0 = Release|x86
+		{FB8E0362-BC67-4FF2-BF86-A9F2ED6C99D4}.Debug|x86.ActiveCfg = Debug|x86
+		{FB8E0362-BC67-4FF2-BF86-A9F2ED6C99D4}.Debug|x86.Build.0 = Debug|x86
+		{FB8E0362-BC67-4FF2-BF86-A9F2ED6C99D4}.Release|x86.ActiveCfg = Release|x86
+		{FB8E0362-BC67-4FF2-BF86-A9F2ED6C99D4}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal
