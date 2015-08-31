@@ -246,8 +246,8 @@ namespace FacultyFeudHost
                 rtBox.BackColor = System.Drawing.Color.White;
                 lftBox.BackColor = System.Drawing.Color.White;
 
-                audience.audWnd.lftBox.Visibility = System.Windows.Visibility.Hidden;
-                audience.audWnd.rtBox.Visibility = System.Windows.Visibility.Hidden;
+                audience.audWnd.lftBox.Visibility = Visibility.Hidden;
+                audience.audWnd.rtBox.Visibility = Visibility.Hidden;
             }
 
             tLeftScore.Text = leftScore.ToString();
@@ -304,9 +304,7 @@ namespace FacultyFeudHost
                     pointMade = true;
                 }
                 else
-                {
                     FlipBack(ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
-                }
             }
             else if (sender == a_2)
             {
@@ -317,147 +315,77 @@ namespace FacultyFeudHost
                     pointMade = true;
                 }
                 else
-                {
                     FlipBack(ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
-                }
+                
             }
             else if (sender == a_3)
             {
                 if (a_3.Checked)
                 {
                     ansIndex = 2;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle2.Fill = itemAnsBg;
-                    audience.audWnd.a_3.Content = q;
-                    audience.audWnd.a_3.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_3.Visibility = Visibility.Visible;
-                    audience.audWnd.b_3.Visibility = Visibility.Hidden;
-                    audience.audWnd.p3.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p3.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle2.Fill = itemBg;
-                    audience.audWnd.a_3.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_3.Visibility = Visibility.Visible;
-                    audience.audWnd.p3.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
+                    
             }
             else if (sender == a_4)
             {
                 if (a_4.Checked)
                 {
                     ansIndex = 3;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle3.Fill = itemAnsBg;
-                    audience.audWnd.a_4.Content = q;
-                    audience.audWnd.a_4.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_4.Visibility = Visibility.Visible;
-                    audience.audWnd.b_4.Visibility = Visibility.Hidden;
-                    audience.audWnd.p4.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p4.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle3.Fill = itemBg;
-                    audience.audWnd.a_4.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_4.Visibility = Visibility.Visible;
-                    audience.audWnd.p4.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
+                 
             }
             else if (sender == a_5)
             {
                 if (a_5.Checked)
                 {
                     ansIndex = 4;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle4.Fill = itemAnsBg;
-                    audience.audWnd.a_5.Content = q;
-                    audience.audWnd.a_5.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_5.Visibility = Visibility.Visible;
-                    audience.audWnd.b_5.Visibility = Visibility.Hidden;
-                    audience.audWnd.p5.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p5.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle4.Fill = itemBg;
-                    audience.audWnd.a_5.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_5.Visibility = Visibility.Visible;
-                    audience.audWnd.p5.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
             }
             else if (sender == a_6)
             {
                 if (a_6.Checked)
                 {
                     ansIndex = 5;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle5.Fill = itemAnsBg;
-                    audience.audWnd.a_6.Content = q;
-                    audience.audWnd.a_6.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_6.Visibility = Visibility.Visible;
-                    audience.audWnd.b_6.Visibility = Visibility.Hidden;
-                    audience.audWnd.p6.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p6.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle5.Fill = itemBg;
-                    audience.audWnd.a_6.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_6.Visibility = Visibility.Visible;
-                    audience.audWnd.p6.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
             }
             else if (sender == a_7)
             {
                 if (a_7.Checked)
                 {
                     ansIndex = 6;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle6.Fill = itemAnsBg;
-                    audience.audWnd.a_7.Content = q;
-                    audience.audWnd.a_7.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_7.Visibility = Visibility.Visible;
-                    audience.audWnd.b_7.Visibility = Visibility.Hidden;
-                    audience.audWnd.p7.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p7.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle6.Fill = itemBg;
-                    audience.audWnd.a_7.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_7.Visibility = Visibility.Visible;
-                    audience.audWnd.p7.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
+                 
             }
             else if (sender == a_8)
             {
                 if (a_8.Checked)
                 {
                     ansIndex = 7;
-                    q = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
-                    audience.audWnd.rectangle7.Fill = itemAnsBg;
-                    audience.audWnd.a_8.Content = q;
-                    audience.audWnd.a_8.FontSize = calcFontSize(q, 294);
-                    audience.audWnd.a_8.Visibility = Visibility.Visible;
-                    audience.audWnd.b_8.Visibility = Visibility.Hidden;
-                    audience.audWnd.p8.Content = QuestionManager.questions[qList.SelectedIndex].p[ansIndex].ToString();
-                    audience.audWnd.p8.Visibility = Visibility.Visible;
+                    FlipAnswer(ansIndex, ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
                     pointMade = true;
                 }
                 else
-                {
-                    audience.audWnd.rectangle7.Fill = itemBg;
-                    audience.audWnd.a_8.Visibility = Visibility.Hidden;
-                    audience.audWnd.b_8.Visibility = Visibility.Visible;
-                    audience.audWnd.p8.Visibility = Visibility.Hidden;
-                }
+                    FlipBack(ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
             }
 
             if (((CheckBox)sender).Checked && pointMade)
