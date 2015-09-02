@@ -35,6 +35,7 @@ namespace FacultyFeudHost
         int numInv;
         int leftScore = 0;
         int rightScore = 0;
+        int roundScore = 0;
         bool leftInControl = false;
         bool rightInControl = false;
 
@@ -120,46 +121,15 @@ namespace FacultyFeudHost
 
         public void clearWindow()
         {
-            audience.audWnd.rectangle0.Fill = itemBg;
-            audience.audWnd.a_1.Visibility = Visibility.Hidden;
-            audience.audWnd.b_1.Visibility = Visibility.Visible;
-            audience.audWnd.p1.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle1.Fill = itemBg;
-            audience.audWnd.a_2.Visibility = Visibility.Hidden;
-            audience.audWnd.b_2.Visibility = Visibility.Visible;
-            audience.audWnd.p2.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle2.Fill = itemBg;
-            audience.audWnd.a_3.Visibility = Visibility.Hidden;
-            audience.audWnd.b_3.Visibility = Visibility.Visible;
-            audience.audWnd.p3.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle3.Fill = itemBg;
-            audience.audWnd.a_4.Visibility = Visibility.Hidden;
-            audience.audWnd.b_4.Visibility = Visibility.Visible;
-            audience.audWnd.p4.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle4.Fill = itemBg;
-            audience.audWnd.a_5.Visibility = Visibility.Hidden;
-            audience.audWnd.b_5.Visibility = Visibility.Visible;
-            audience.audWnd.p5.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle5.Fill = itemBg;
-            audience.audWnd.a_6.Visibility = Visibility.Hidden;
-            audience.audWnd.b_6.Visibility = Visibility.Visible;
-            audience.audWnd.p6.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle6.Fill = itemBg;
-            audience.audWnd.a_7.Visibility = Visibility.Hidden;
-            audience.audWnd.b_7.Visibility = Visibility.Visible;
-            audience.audWnd.p7.Visibility = Visibility.Hidden;
-
-            audience.audWnd.rectangle7.Fill = itemBg;
-            audience.audWnd.a_8.Visibility = Visibility.Hidden;
-            audience.audWnd.b_8.Visibility = Visibility.Visible;
-            audience.audWnd.p8.Visibility = Visibility.Hidden;
-
+            FlipBack(ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
+            FlipBack(ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
+            FlipBack(ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
+            FlipBack(ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
+            FlipBack(ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
+            FlipBack(ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
+            FlipBack(ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
+            FlipBack(ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
+            
             rtBox.BackColor = System.Drawing.Color.White;
             lftBox.BackColor = System.Drawing.Color.White;
 
@@ -170,7 +140,7 @@ namespace FacultyFeudHost
         {
             if (sender == back)
             {
-                if (qList.SelectedIndex > 0)
+                if (qList.SelectedIndex > 0 && (roundScore == 0))
                 {
                     a_1.Checked = false;
                     a_2.Checked = false;
@@ -187,10 +157,12 @@ namespace FacultyFeudHost
                     cMgr.clearDial();
                     cbShowQuestion.Checked = false;
                 }
+                else if (roundScore > 0)
+                    System.Windows.MessageBox.Show("Points unallocated from round, please ensure the correct team is selected and press End round first.");
             }
             else if (sender == next)
             {
-                if (qList.SelectedIndex + 1 < qList.Items.Count)
+                if ((qList.SelectedIndex + 1 < qList.Items.Count) && (roundScore == 0))
                 {
                     a_1.Checked = false;
                     a_2.Checked = false;
@@ -207,6 +179,8 @@ namespace FacultyFeudHost
                     cMgr.clearDial();
                     cbShowQuestion.Checked = false;
                 }
+                else if (roundScore > 0)
+                    System.Windows.MessageBox.Show("Points unallocated from round, please ensure the correct team is selected and press End round first.");
             }
             else if (sender == a_x)
             {
@@ -230,8 +204,17 @@ namespace FacultyFeudHost
                         break;
                 }
                 a_x.Text = "X: " + numInv.ToString();
-                if (numInv == 3)
+                if (numInv == 3 && rightInControl)
+                { 
                     numInv = 0;
+                    bLeftControl_Click(null, null); 
+                }
+
+                if (numInv == 3 && leftInControl)
+                {
+                    numInv = 0;
+                    bRightControl_Click(null, null);
+                }
             }
             else if (sender == b_x_s)
             {
@@ -239,6 +222,8 @@ namespace FacultyFeudHost
                 inv.Play();
                 timer1.Start();
                 audience.audWnd.rectangle8.Visibility = Visibility.Visible;
+                if (rightInControl) { bLeftControl_Click(null, null); return; }
+                if (leftInControl) { bRightControl_Click(null, null); return; }
             }
             else if (sender == button1)
             {
@@ -250,11 +235,7 @@ namespace FacultyFeudHost
                 audience.audWnd.rtBox.Visibility = Visibility.Hidden;
             }
 
-            tLeftScore.Text = leftScore.ToString();
-            tRightScore.Text = rightScore.ToString();
-
-            audience.audWnd.leftScore.Content = leftScore.ToString();
-            audience.audWnd.rightScore.Content = rightScore.ToString();
+            updateScores();
 
             audience.audWnd.Question.Content = QuestionManager.questions[qList.SelectedIndex].q;
         }
@@ -287,12 +268,12 @@ namespace FacultyFeudHost
         }
         private void a_CheckedChanged(object sender, EventArgs e)
         {
-            if (leftInControl == false && rightInControl == false)
+            if (leftInControl == false && rightInControl == false) {
+                System.Windows.MessageBox.Show("No team in control? Please select one.");
                 return; //no team in control?
-            
-            string q;
+            }
+
             int ansIndex = 0;
-            bool pointMade = false;
 
             if (sender == a_1)
             {
@@ -301,7 +282,6 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 0;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
@@ -312,11 +292,10 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 1;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
-                
+
             }
             else if (sender == a_3)
             {
@@ -324,11 +303,10 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 2;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
-                    
+
             }
             else if (sender == a_4)
             {
@@ -336,11 +314,10 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 3;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
-                 
+
             }
             else if (sender == a_5)
             {
@@ -348,7 +325,6 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 4;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
@@ -359,7 +335,6 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 5;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
@@ -370,11 +345,10 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 6;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
-                 
+
             }
             else if (sender == a_8)
             {
@@ -382,34 +356,34 @@ namespace FacultyFeudHost
                 {
                     ansIndex = 7;
                     FlipAnswer(ansIndex, ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
-                    pointMade = true;
                 }
                 else
                     FlipBack(ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
             }
 
-            if (((CheckBox)sender).Checked && pointMade)
+            if (((CheckBox)sender).Checked)
             {
                 cor.Play();
                 int pointsGained = (int)QuestionManager.questions[qList.SelectedIndex].p[ansIndex];
                 if (cbPointsDoubled.Checked)
                     pointsGained = pointsGained * 2;
 
-                if (leftInControl && pointMade)
-                    leftScore += pointsGained;
-
-
-                if (rightInControl && pointMade)
-                    rightScore += pointsGained;
+                roundScore += pointsGained;
             }
-                
 
+            updateScores();
+
+        }
+
+        private void updateScores()
+        {
             tLeftScore.Text = leftScore.ToString();
             tRightScore.Text = rightScore.ToString();
+            tbRoundScore.Text = roundScore.ToString();
 
             audience.audWnd.leftScore.Content = leftScore.ToString();
             audience.audWnd.rightScore.Content = rightScore.ToString();
-
+            audience.audWnd.roundScore.Content = roundScore.ToString();
         }
 
         public int calcFontSize(string s, int targetW)
@@ -472,6 +446,21 @@ namespace FacultyFeudHost
             else
                 audience.audWnd.Question.Visibility = Visibility.Hidden;
 
+        }
+
+        private void bEndRound_Click(object sender, EventArgs e)
+        {
+            if (leftInControl)
+                leftScore += roundScore;
+            if (rightInControl)
+                rightScore += roundScore;
+            roundScore = 0;
+            updateScores();
+        }
+
+        private void tbRoundScore_TextChanged(object sender, EventArgs e)
+        {
+            roundScore = Convert.ToInt32(tbRoundScore.Text);
         }
 
         private void bRightControl_Click(object sender, EventArgs e)

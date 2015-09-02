@@ -81,8 +81,8 @@ namespace FacultyFeudHost
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bNewQuestion = new System.Windows.Forms.Button();
+            this.bDeleteQuestion = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p7)).BeginInit();
@@ -633,33 +633,33 @@ namespace FacultyFeudHost
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // button1
+            // bNewQuestion
             // 
-            this.button1.Location = new System.Drawing.Point(15, 391);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "New";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bNewQuestion.Location = new System.Drawing.Point(15, 391);
+            this.bNewQuestion.Name = "bNewQuestion";
+            this.bNewQuestion.Size = new System.Drawing.Size(55, 23);
+            this.bNewQuestion.TabIndex = 4;
+            this.bNewQuestion.Text = "New";
+            this.bNewQuestion.UseVisualStyleBackColor = true;
+            this.bNewQuestion.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bDeleteQuestion
             // 
-            this.button2.Location = new System.Drawing.Point(80, 391);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bDeleteQuestion.Location = new System.Drawing.Point(80, 391);
+            this.bDeleteQuestion.Name = "bDeleteQuestion";
+            this.bDeleteQuestion.Size = new System.Drawing.Size(55, 23);
+            this.bDeleteQuestion.TabIndex = 5;
+            this.bDeleteQuestion.Text = "Delete";
+            this.bDeleteQuestion.UseVisualStyleBackColor = true;
+            this.bDeleteQuestion.Click += new System.EventHandler(this.button2_Click);
             // 
             // questions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 439);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bDeleteQuestion);
+            this.Controls.Add(this.bNewQuestion);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.qList);
             this.Controls.Add(this.label1);
@@ -716,8 +716,8 @@ namespace FacultyFeudHost
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bNewQuestion;
+        private System.Windows.Forms.Button bDeleteQuestion;
         private System.Windows.Forms.NumericUpDown p8;
         private System.Windows.Forms.NumericUpDown p7;
         private System.Windows.Forms.NumericUpDown p6;

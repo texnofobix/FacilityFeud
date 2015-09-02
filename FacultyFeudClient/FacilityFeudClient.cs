@@ -29,9 +29,9 @@ using System.Windows.Forms;
 
 namespace FacultyFeudClient
 {
-    public partial class Form1 : Form
+    public partial class FacilityFeudClient : Form
     {
-        public Form1()
+        public FacilityFeudClient()
         {
             InitializeComponent();
         }
@@ -89,7 +89,7 @@ namespace FacultyFeudClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listenerEP.Address = IPAddress.Parse(textBox1.Text);
+            listenerEP.Address = IPAddress.Parse(tbHostIp.Text);
             byte[] packet = Encoding.ASCII.GetBytes("c");
             listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, 7471));
             conStatTimer.Start();
@@ -126,17 +126,17 @@ namespace FacultyFeudClient
             }
             else if (e.Alt && e.Control && e.KeyCode == Keys.L)
             {
-                comboBox1.Enabled = !comboBox1.Enabled;
-                comboBox1.Visible = !comboBox1.Visible;
-                textBox1.Enabled = !textBox1.Enabled;
-                textBox1.Visible = !textBox1.Visible;
+                cbTeam.Enabled = !cbTeam.Enabled;
+                cbTeam.Visible = !cbTeam.Visible;
+                tbHostIp.Enabled = !tbHostIp.Enabled;
+                tbHostIp.Visible = !tbHostIp.Visible;
                 label1.Visible = !label1.Visible;
                 label3.Visible = !label3.Visible;
-                button1.Visible = !button1.Visible;
+                bConnect.Visible = !bConnect.Visible;
             }
             try
             {
-                byte[] packet = Encoding.ASCII.GetBytes("d,"+comboBox1.SelectedIndex);
+                byte[] packet = Encoding.ASCII.GetBytes("d,"+cbTeam.SelectedIndex);
                 listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, 7471));
             }
             catch (Exception ex) 

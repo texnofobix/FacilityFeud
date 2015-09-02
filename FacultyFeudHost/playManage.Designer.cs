@@ -73,6 +73,8 @@ namespace FacultyFeudHost
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbPointsDoubled = new System.Windows.Forms.CheckBox();
+            this.tbRoundScore = new System.Windows.Forms.TextBox();
+            this.bEndRound = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lftBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rtBox)).BeginInit();
@@ -249,7 +251,7 @@ namespace FacultyFeudHost
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(531, 327);
+            this.button1.Location = new System.Drawing.Point(284, 416);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 37);
             this.button1.TabIndex = 4;
@@ -301,6 +303,8 @@ namespace FacultyFeudHost
             this.tLeftScore.Name = "tLeftScore";
             this.tLeftScore.Size = new System.Drawing.Size(59, 20);
             this.tLeftScore.TabIndex = 7;
+            this.tLeftScore.Text = "0";
+            this.tLeftScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tLeftScore.TextChanged += new System.EventHandler(this.tLeftScore_TextChanged);
             // 
             // tRightScore
@@ -309,6 +313,8 @@ namespace FacultyFeudHost
             this.tRightScore.Name = "tRightScore";
             this.tRightScore.Size = new System.Drawing.Size(60, 20);
             this.tRightScore.TabIndex = 8;
+            this.tRightScore.Text = "0";
+            this.tRightScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tRightScore.TextChanged += new System.EventHandler(this.tRightScore_TextChanged);
             // 
             // bLeftControl
@@ -379,11 +385,33 @@ namespace FacultyFeudHost
             this.cbPointsDoubled.Text = "Double points";
             this.cbPointsDoubled.UseVisualStyleBackColor = true;
             // 
+            // tbRoundScore
+            // 
+            this.tbRoundScore.Location = new System.Drawing.Point(555, 328);
+            this.tbRoundScore.Name = "tbRoundScore";
+            this.tbRoundScore.Size = new System.Drawing.Size(100, 20);
+            this.tbRoundScore.TabIndex = 16;
+            this.tbRoundScore.Text = "0";
+            this.tbRoundScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbRoundScore.TextChanged += new System.EventHandler(this.tbRoundScore_TextChanged);
+            // 
+            // bEndRound
+            // 
+            this.bEndRound.Location = new System.Drawing.Point(311, 464);
+            this.bEndRound.Name = "bEndRound";
+            this.bEndRound.Size = new System.Drawing.Size(97, 46);
+            this.bEndRound.TabIndex = 17;
+            this.bEndRound.Text = "End Round and assign points";
+            this.bEndRound.UseVisualStyleBackColor = true;
+            this.bEndRound.Click += new System.EventHandler(this.bEndRound_Click);
+            // 
             // playManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 521);
+            this.Controls.Add(this.bEndRound);
+            this.Controls.Add(this.tbRoundScore);
             this.Controls.Add(this.cbPointsDoubled);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -442,5 +470,7 @@ namespace FacultyFeudHost
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox cbPointsDoubled;
+        private System.Windows.Forms.TextBox tbRoundScore;
+        private System.Windows.Forms.Button bEndRound;
     }
 }

@@ -31,6 +31,6 @@ namespace FacultyFeudHost
     };
     class QuestionManager
     {
-        public static List<Question> questions = null;
+        public static List<Question> questions = null; //a list of question objects
     }
 }

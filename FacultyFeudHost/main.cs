@@ -28,9 +28,9 @@ using System.Windows;
 
 namespace FacultyFeudHost
 {
-    public partial class Form1 : Form
+    public partial class MainWindowForm : Form
     {    
-        public Form1()
+        public MainWindowForm()
         {
             InitializeComponent();
         }
@@ -64,6 +64,14 @@ namespace FacultyFeudHost
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             playManage.mgr.terminate();
+        }
+
+        private void MainWindowForm_Activated(object sender, EventArgs e)
+        {
+            if (QuestionManager.questions.Count != 0)
+                this.bLoadGameManager.Enabled = true;
+            else
+                this.bLoadGameManager.Enabled = false;
         }
     }
 }
