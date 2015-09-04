@@ -111,6 +111,7 @@ namespace FacultyFeudHost
                 }
                 audience.audWnd.setNumAnswers(q.n);
                 lastQindex = qList.SelectedIndex;
+                clearWindow();
             }
             else
             {
@@ -141,14 +142,8 @@ namespace FacultyFeudHost
 
         public void clearWindow()
         {
-            FlipBack(ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
-            FlipBack(ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
-            FlipBack(ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
-            FlipBack(ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
-            FlipBack(ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
-            FlipBack(ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
-            FlipBack(ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
-            FlipBack(ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
+            for (int x = 0; x <= 7; x++)
+                FlipBack(x);
             
             rtBox.BackColor = System.Drawing.Color.White;
             lftBox.BackColor = System.Drawing.Color.White;
@@ -258,18 +253,15 @@ namespace FacultyFeudHost
             }
 
             updateScores();
-
-            audience.audWnd.Question.Content = QuestionManager.questions[qList.SelectedIndex].q;
         }
 
         private int FlipAnswer(int ansIndex, ref System.Windows.Shapes.Rectangle blankBoardFlip, ref System.Windows.Controls.Label answerBox, ref System.Windows.Controls.Label blankBox, ref System.Windows.Controls.Label pointsBox)
         {
-            //TODO: change function to return int of points
             string answerText = QuestionManager.questions[qList.SelectedIndex].a[ansIndex];
             blankBoardFlip.Fill = itemAnsBg;
 
             answerBox.Content = answerText;
-            answerBox.FontSize = calcFontSize(answerText, 294);
+            answerBox.FontSize = calcFontSize(answerText, (int)audience.audWnd.a_1.Width); //294
             answerBox.Visibility = Visibility.Visible;
             
             blankBox.Visibility = Visibility.Hidden;
@@ -280,21 +272,18 @@ namespace FacultyFeudHost
             return (int)QuestionManager.questions[qList.SelectedIndex].p[ansIndex];
         }
 
-        private void FlipBack(ref System.Windows.Shapes.Rectangle blankBoardFlip, ref System.Windows.Controls.Label answerBox, ref System.Windows.Controls.Label blankBox, ref System.Windows.Controls.Label pointBox)
+        private int FlipBack(int ansIndex)
         {
-            blankBoardFlip.Fill = itemBg;
-            answerBox.Visibility = Visibility.Hidden;
-            blankBox.Visibility = Visibility.Visible;
-            pointBox.Visibility = Visibility.Hidden;
-        }
+            audience.audWnd.FlipBack(ansIndex, ref itemBg);
+            try
+            {
+                return (int)QuestionManager.questions[qList.SelectedIndex].p[ansIndex];
+            }
+            catch
+            {
+                return 0;
+            }
 
-        private int FlipBack(int ansIndex, ref System.Windows.Shapes.Rectangle blankBoardFlip, ref System.Windows.Controls.Label answerBox, ref System.Windows.Controls.Label blankBox, ref System.Windows.Controls.Label pointBox)
-        {
-            blankBoardFlip.Fill = itemBg;
-            answerBox.Visibility = Visibility.Hidden;
-            blankBox.Visibility = Visibility.Visible;
-            pointBox.Visibility = Visibility.Hidden;
-            return (int)QuestionManager.questions[qList.SelectedIndex].p[ansIndex];
         }
 
         private void a_CheckedChanged(object sender, EventArgs e)
@@ -310,21 +299,21 @@ namespace FacultyFeudHost
                 if (a_1.Checked)
                     pointsGained = FlipAnswer(0, ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
                 else
-                    pointsGained = FlipBack(0, ref audience.audWnd.rectangle0, ref audience.audWnd.a_1, ref audience.audWnd.b_1, ref audience.audWnd.p1);
+                    pointsGained = FlipBack(0);
             }
             else if (sender == a_2)
             {
                 if (a_2.Checked)
                     pointsGained = FlipAnswer(1, ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
                 else
-                    pointsGained = FlipBack(1,ref audience.audWnd.rectangle1, ref audience.audWnd.a_2, ref audience.audWnd.b_2, ref audience.audWnd.p2);
+                    pointsGained = FlipBack(1);
             }
             else if (sender == a_3)
             {
                 if (a_3.Checked)
                     pointsGained = FlipAnswer(2, ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
                 else
-                    pointsGained = FlipBack(2,ref audience.audWnd.rectangle2, ref audience.audWnd.a_3, ref audience.audWnd.b_3, ref audience.audWnd.p3);
+                    pointsGained = FlipBack(2);
 
             }
             else if (sender == a_4)
@@ -332,7 +321,7 @@ namespace FacultyFeudHost
                 if (a_4.Checked)
                     pointsGained = FlipAnswer(3, ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
                 else
-                    pointsGained = FlipBack(3,ref audience.audWnd.rectangle3, ref audience.audWnd.a_4, ref audience.audWnd.b_4, ref audience.audWnd.p4);
+                    pointsGained = FlipBack(3);
 
             }
             else if (sender == a_5)
@@ -340,21 +329,21 @@ namespace FacultyFeudHost
                 if (a_5.Checked)
                     pointsGained = FlipAnswer(4, ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
                 else
-                    pointsGained = FlipBack(4,ref audience.audWnd.rectangle4, ref audience.audWnd.a_5, ref audience.audWnd.b_5, ref audience.audWnd.p5);
+                    pointsGained = FlipBack(4);
             }
             else if (sender == a_6)
             {
                 if (a_6.Checked)
                     pointsGained = FlipAnswer(5, ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
                 else
-                    pointsGained = FlipBack(5,ref audience.audWnd.rectangle5, ref audience.audWnd.a_6, ref audience.audWnd.b_6, ref audience.audWnd.p6);
+                    pointsGained = FlipBack(5);
             }
             else if (sender == a_7)
             {
                 if (a_7.Checked)
                     pointsGained = FlipAnswer(6, ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
                 else
-                    pointsGained = FlipBack(6,ref audience.audWnd.rectangle6, ref audience.audWnd.a_7, ref audience.audWnd.b_7, ref audience.audWnd.p7);
+                    pointsGained = FlipBack(6);
 
             }
             else if (sender == a_8)
@@ -362,7 +351,7 @@ namespace FacultyFeudHost
                 if (a_8.Checked)
                     pointsGained = FlipAnswer(7, ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
                 else
-                    pointsGained = FlipBack(7,ref audience.audWnd.rectangle7, ref audience.audWnd.a_8, ref audience.audWnd.b_8, ref audience.audWnd.p8);
+                    pointsGained = FlipBack(7);
             }
 
             if (cbPointsDoubled.Checked)
@@ -392,6 +381,8 @@ namespace FacultyFeudHost
             audience.audWnd.leftScore.Content = leftScore.ToString();
             audience.audWnd.rightScore.Content = rightScore.ToString();
             audience.audWnd.roundScore.Content = roundScore.ToString();
+
+            audience.audWnd.Question.Content = QuestionManager.questions[qList.SelectedIndex].q;
         }
 
         public int calcFontSize(string s, int targetW)
@@ -519,8 +510,9 @@ namespace FacultyFeudHost
         private void tmrAnswer_Tick(object sender, EventArgs e)
         {
             //on non-out of time, update button remaining
-            bAnswerTimer.Text = answerTime.ToString();
+            bAnswerTimer.Text = (answerTime/1000).ToString();
             answerTime -= tmrAnswer.Interval;
+            if (answerTime < 1) tmrAnswer.Stop();
         }
 
         private void tbRoundScore_TextChanged(object sender, EventArgs e)
