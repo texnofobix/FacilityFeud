@@ -33,6 +33,8 @@ namespace FacultyFeudClient
             if (disposing && (components != null))
             {
                 components.Dispose();
+                listenerThread.Abort();
+                listener.Close();
             }
             base.Dispose(disposing);
         }
@@ -49,10 +51,11 @@ namespace FacultyFeudClient
             this.tbHostIp = new System.Windows.Forms.TextBox();
             this.bConnect = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbConnectionStatus = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbTeam = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.rtbInstructions = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConnectionStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,7 +83,7 @@ namespace FacultyFeudClient
             this.bConnect.TabIndex = 2;
             this.bConnect.Text = "Connect";
             this.bConnect.UseVisualStyleBackColor = true;
-            this.bConnect.Click += new System.EventHandler(this.button1_Click);
+            this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
             // 
             // label2
             // 
@@ -91,15 +94,15 @@ namespace FacultyFeudClient
             this.label2.TabIndex = 3;
             this.label2.Text = "Connection Status";
             // 
-            // pictureBox1
+            // pbConnectionStatus
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Red;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(112, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 21);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.pbConnectionStatus.BackColor = System.Drawing.Color.Gray;
+            this.pbConnectionStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbConnectionStatus.Location = new System.Drawing.Point(112, 35);
+            this.pbConnectionStatus.Name = "pbConnectionStatus";
+            this.pbConnectionStatus.Size = new System.Drawing.Size(31, 21);
+            this.pbConnectionStatus.TabIndex = 4;
+            this.pbConnectionStatus.TabStop = false;
             // 
             // label3
             // 
@@ -122,15 +125,25 @@ namespace FacultyFeudClient
             this.cbTeam.Size = new System.Drawing.Size(92, 21);
             this.cbTeam.TabIndex = 6;
             // 
+            // rtbInstructions
+            // 
+            this.rtbInstructions.Location = new System.Drawing.Point(60, 91);
+            this.rtbInstructions.Name = "rtbInstructions";
+            this.rtbInstructions.Size = new System.Drawing.Size(470, 104);
+            this.rtbInstructions.TabIndex = 7;
+            this.rtbInstructions.Text = "To toggle full screen:  Use Alt + Control + Enter\n\nTo toggle the control lock: Us" +
+    "e  Alt + Control + L\n\n";
+            // 
             // FacilityFeudClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1016, 741);
+            this.Controls.Add(this.rtbInstructions);
             this.Controls.Add(this.cbTeam);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbConnectionStatus);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bConnect);
             this.Controls.Add(this.tbHostIp);
@@ -141,7 +154,7 @@ namespace FacultyFeudClient
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConnectionStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,9 +166,10 @@ namespace FacultyFeudClient
         private System.Windows.Forms.TextBox tbHostIp;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbConnectionStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbTeam;
+        private System.Windows.Forms.RichTextBox rtbInstructions;
     }
 }
 

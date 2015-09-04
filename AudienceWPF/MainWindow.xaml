@@ -26,6 +26,10 @@
     </Window.Background >
     <Viewbox Height="713" Name="viewbox1" Width="986">
         <Grid Height="768" Name="grid1" Width="1024">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="407*"/>
+                <RowDefinition Height="361*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="203*" />
                 <ColumnDefinition Width="4*" />
@@ -35,17 +39,17 @@
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,331,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,331,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,448,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,40.879,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.Row="1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,566,0,0" Name="rectangle3" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="68,158.879,0,0" Name="rectangle3" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.Row="1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
@@ -55,81 +59,81 @@
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="548,331,0,0" Name="rectangle5" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="548,331,0,0" Name="rectangle5" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="549,449,0,0" Name="rectangle6" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="549,41.879,0,0" Name="rectangle6" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.Row="1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="110" HorizontalAlignment="Left" Margin="549,567,0,0" Name="rectangle7" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public">
+            <Rectangle Height="110" HorizontalAlignment="Left" Margin="549,159.879,0,0" Name="rectangle7" Stroke="Black" VerticalAlignment="Top" Width="411" x:FieldModifier="public" Grid.Row="1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Resources/item bg.png" />
                 </Rectangle.Fill>
             </Rectangle>
             <Label Content="1" Height="100" HorizontalAlignment="Left" Margin="251,209,0,0" Name="b_1" VerticalAlignment="Top" FontSize="72" Foreground="White" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="2" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="251,326,0,0" Name="b_2" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="3" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="251,443,0,0" Name="b_3" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="4" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="250,561,0,0" Name="b_4" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
+            <Label Content="2" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="251,326,0,0" Name="b_2" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.RowSpan="2"/>
+            <Label Content="3" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="251,35.879,0,0" Name="b_3" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.Row="1"/>
+            <Label Content="4" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="250,153.879,0,0" Name="b_4" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.Row="1"/>
             <Label Content="5" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="731,207,0,0" Name="b_5" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="6" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="730,327,0,0" Name="b_6" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="7" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="734,444,0,0" Name="b_7" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
-            <Label Content="8" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="732,0,0,106" Name="b_8" VerticalAlignment="Bottom" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public"/>
+            <Label Content="6" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="730,327,0,0" Name="b_6" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.RowSpan="2"/>
+            <Label Content="7" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="734,36.879,0,0" Name="b_7" VerticalAlignment="Top" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.Row="1"/>
+            <Label Content="8" FontSize="72" Foreground="White" Height="100" HorizontalAlignment="Left" Margin="732,0,0,106" Name="b_8" VerticalAlignment="Bottom" IsEnabled="True" OpacityMask="Black" Panel.ZIndex="1" x:FieldModifier="public" Grid.Row="1"/>
             <Label Content="answer 1 here" Height="78" HorizontalAlignment="Left" Margin="86,231,0,0" Name="a_1" VerticalAlignment="Top" Width="294" FontSize="40" Foreground="White" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 2 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="85,347,0,0" Name="a_2" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 3 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="84,464,0,0" Name="a_3" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 4 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="83,583,0,0" Name="a_4" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
+            <Label Content="answer 2 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="85,347,0,0" Name="a_2" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.RowSpan="2"/>
+            <Label Content="answer 3 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="84,56.879,0,0" Name="a_3" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1"/>
+            <Label Content="answer 4 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="83,175.879,0,0" Name="a_4" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1"/>
             <Label Content="answer 5 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,231,0,0" Name="a_5" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 6 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,346,0,0" Name="a_6" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 7 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,462,0,0" Name="a_7" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label Content="answer 8 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,582,0,0" Name="a_8" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public"/>
-            <Rectangle Height="373" HorizontalAlignment="Left" Margin="315,256,0,0" Name="rectangle8" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Width="397" x:FieldModifier="public" Visibility="Hidden" OpacityMask="Black">
+            <Label Content="answer 6 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,346,0,0" Name="a_6" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.RowSpan="2"/>
+            <Label Content="answer 7 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,54.879,0,0" Name="a_7" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1"/>
+            <Label Content="answer 8 here" FontSize="40" Foreground="White" Height="78" HorizontalAlignment="Left" Margin="565,174.879,0,0" Name="a_8" VerticalAlignment="Top" Width="294" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1"/>
+            <Rectangle Height="373" HorizontalAlignment="Left" Margin="315,256,0,0" x:Name="x_1_1" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Width="397" x:FieldModifier="public" Visibility="Hidden" OpacityMask="Black" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="297" HorizontalAlignment="Left" Margin="550,294,0,0" Name="x_2_2" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" OpacityMask="Black" x:FieldModifier="public">
+            <Rectangle Height="297" HorizontalAlignment="Left" Margin="550,294,0,0" Name="x_2_2" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" OpacityMask="Black" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="297" HorizontalAlignment="Left" Margin="161,294,0,0" Name="x_2_1" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" OpacityMask="Black" x:FieldModifier="public">
+            <Rectangle Height="297" HorizontalAlignment="Left" Margin="161,294,0,0" Name="x_2_1" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" OpacityMask="Black" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="297" HorizontalAlignment="Left" Margin="33,295,0,0" Name="x_3_1" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public">
+            <Rectangle Height="297" HorizontalAlignment="Left" Margin="33,295,0,0" Name="x_3_1" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="297" HorizontalAlignment="Left" Margin="357,295,0,0" Name="x_3_2" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public">
+            <Rectangle Height="297" HorizontalAlignment="Left" Margin="357,295,0,0" Name="x_3_2" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="297" HorizontalAlignment="Left" Margin="681,295,0,0" Name="x_3_3" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public">
+            <Rectangle Height="297" HorizontalAlignment="Left" Margin="681,295,0,0" Name="x_3_3" Panel.ZIndex="2" Stroke="Black" VerticalAlignment="Top" Visibility="Hidden" Width="316" x:FieldModifier="public" Grid.RowSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/AudienceWPF;component/Resources/x.png" />
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="92" HorizontalAlignment="Left" Margin="-19,676,0,0" Name="lftBox" VerticalAlignment="Top" Width="497" x:FieldModifier="public" Fill="Lime" Visibility="Hidden" />
-            <Rectangle Height="92" HorizontalAlignment="Left" Margin="552,676,0,0" Name="rtBox" VerticalAlignment="Top" Width="491" Grid.ColumnSpan="2" x:FieldModifier="public" Fill="Lime" Visibility="Hidden" />
             <Label Content="99" Height="82" HorizontalAlignment="Left" Margin="380,217,0,0" Name="p1" VerticalAlignment="Top" Width="93" FontSize="72" Padding="0" FontStyle="Normal" FontWeight="Normal" FontStretch="Normal" Foreground="White" Visibility="Hidden" x:FieldModifier="public" BorderBrush="{x:Null}" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,334,0,0" Name="p2" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,448,0,0" Name="p3" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,334,0,0" Name="p2" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.RowSpan="2" />
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,40.879,0,0" Name="p3" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1" />
             <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="861,215,0,0" Name="p5" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="861,331,0,0" Name="p6" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="862,447,0,0" Name="p7" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="861,569,0,0" Name="p8" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,568,0,0" Name="p4" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" />
-            <Label Name="leftScore" Content="0" HorizontalAlignment="Left" Margin="-19,75,0,0" VerticalAlignment="Top" Height="77" Width="210" Background="Black" Foreground="#FFF3F311" FontSize="48" HorizontalContentAlignment="Center" x:FieldModifier="public"/>
-            <Label Name="rightScore" Content="0" HorizontalAlignment="Left" Margin="802,75,0,0" VerticalAlignment="Top" Height="77" Width="212" Background="Black" Foreground="#FFF3F311" FontSize="48" HorizontalContentAlignment="Center" x:FieldModifier="public" Grid.ColumnSpan="2"/>
-            <Label x:Name="Question" Content="Blank question" HorizontalAlignment="Left" Margin="33,697,0,0" VerticalAlignment="Top" Height="61" Width="961" FontSize="32" Foreground="#FF30D120" Background="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Hidden" x:FieldModifier="public"/>
-            <Label x:Name="roundScore" Content="0" HorizontalAlignment="Left" Margin="399,33,0,0" VerticalAlignment="Top" Height="119" Width="218" Background="Black" Foreground="#FFF3F311" FontSize="48" HorizontalContentAlignment="Center" x:FieldModifier="public"/>
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="861,331,0,0" Name="p6" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.RowSpan="2" />
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="862,39.879,0,0" Name="p7" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1" />
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="861,161.879,0,0" Name="p8" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1" />
+            <Label Content="99" FontSize="72" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="White" Height="82" HorizontalAlignment="Left" Margin="381,160.879,0,0" Name="p4" Padding="0" VerticalAlignment="Top" Width="93" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1" />
+            <Label Name="leftScore" Content="0" HorizontalAlignment="Left" Margin="-19,75,0,0" VerticalAlignment="Top" Height="92" Width="210" Background="Black" Foreground="#FFF3F311" FontSize="64" HorizontalContentAlignment="Center" x:FieldModifier="public" BorderThickness="0" BorderBrush="Black" VerticalContentAlignment="Center"/>
+            <Label Name="rightScore" Content="0" HorizontalAlignment="Left" Margin="802,75,0,0" VerticalAlignment="Top" Height="92" Width="212" Background="Black" Foreground="#FFF3F311" FontSize="64" HorizontalContentAlignment="Center" x:FieldModifier="public" Grid.ColumnSpan="2"/>
+            <Label x:Name="Question" Content="Blank question" HorizontalAlignment="Left" Margin="33,289.879,0,0" VerticalAlignment="Top" Height="61" Width="961" FontSize="32" Foreground="#FF30D120" Background="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Hidden" x:FieldModifier="public" Grid.Row="1"/>
+            <Label x:Name="roundScore" Content="0" HorizontalAlignment="Left" Margin="399,33,0,0" VerticalAlignment="Top" Height="119" Width="218" Background="Black" Foreground="#FFF3F311" FontSize="64" HorizontalContentAlignment="Center" x:FieldModifier="public" FontWeight="ExtraBold" VerticalContentAlignment="Center"/>
+            <Rectangle x:Name="leftWin" HorizontalAlignment="Left" Height="526" Margin="-37,195,0,0" VerticalAlignment="Top" Width="65" Fill="#FF05B024" Opacity="0.8" x:FieldModifier="public" Visibility="Hidden" Grid.RowSpan="2" />
+            <Rectangle x:Name="rightWin" HorizontalAlignment="Left" Height="526" Margin="0,195,-37,0" VerticalAlignment="Top" Width="57" Fill="#FF05B024" Opacity="0.8" Grid.Column="1" x:FieldModifier="public" Visibility="Hidden" Grid.RowSpan="2" />
         </Grid>
     </Viewbox>
 </Window>

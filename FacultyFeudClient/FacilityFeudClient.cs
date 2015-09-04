@@ -38,6 +38,8 @@ namespace FacultyFeudClient
         Thread listenerThread;
         UdpClient listener;
         IPEndPoint listenerEP;
+        int clientPort = 7472;
+        int serverPort = 7471;
         System.Timers.Timer conStatTimer;
         System.Timers.Timer pingTimer;
 
@@ -54,7 +56,7 @@ namespace FacultyFeudClient
                     string data = Encoding.ASCII.GetString(buf);
                     if (data == "v")
                     {
-                        pictureBox1.BackColor = Color.Green;
+                        pbConnectionStatus.BackColor = Color.Green;
                         conStatTimer.Stop();
                         conStatTimer.Start();
                     }
@@ -67,7 +69,19 @@ namespace FacultyFeudClient
                         this.BackColor = Color.White;
                     }
                 }
-                catch (Exception ex) { }
+                catch (SocketException)
+                {
+                    pbConnectionStatus.BackColor = Color.Red;
+                    listenerThread.Abort();
+                    return;
+                }
+                catch (ThreadAbortException)
+                {
+                    return;
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -77,33 +91,59 @@ namespace FacultyFeudClient
 
             pingTimer = new System.Timers.Timer(3000);
             pingTimer.Elapsed += new System.Timers.ElapsedEventHandler(ping);
-
-            listenerEP = new IPEndPoint(IPAddress.Any, 7472);
-            listener = new UdpClient(7472);
-            listenerThread = new Thread(new ThreadStart(delegate { listen(); }));
-            listenerThread.Start();
+            
+            try
+            {
+                listenerEP = new IPEndPoint(IPAddress.Any, clientPort);
+                listener = new UdpClient(clientPort);
+                listenerThread = new Thread(new ThreadStart(delegate { listen(); }));
+                listenerThread.Start();
+            }
+            catch (SocketException)
+            {
+                MessageBox.Show("Port 7472 already in use!");
+                Dispose();
+                return;
+            }
 
             max = false;
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bConnect_Click(object sender, EventArgs e)
         {
             listenerEP.Address = IPAddress.Parse(tbHostIp.Text);
             byte[] packet = Encoding.ASCII.GetBytes("c");
-            listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, 7471));
+            sendDataPacket(packet);
             conStatTimer.Start();
             pingTimer.Start();
+        }
+
+        private void sendDataPacket(byte[] packet)
+        {
+            try
+            {
+                listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, serverPort));   
+            }
+            catch (NullReferenceException nex)
+            {
+                rtbInstructions.Text += "`r`nUnable to send packet!`r`n" + nex.Message;
+            }
+            catch
+            {
+                //
+            }
+            
         }
 
         private void ping(object sender, EventArgs e)
         {
             byte[] packet = Encoding.ASCII.GetBytes("c");
-            listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, 7471));
+            sendDataPacket(packet);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.Red;
+            pbConnectionStatus.BackColor = Color.Red;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -133,11 +173,12 @@ namespace FacultyFeudClient
                 label1.Visible = !label1.Visible;
                 label3.Visible = !label3.Visible;
                 bConnect.Visible = !bConnect.Visible;
+                rtbInstructions.Visible = !rtbInstructions.Visible;
             }
             try
             {
                 byte[] packet = Encoding.ASCII.GetBytes("d,"+cbTeam.SelectedIndex);
-                listener.Send(packet, packet.Length, new IPEndPoint(listenerEP.Address, 7471));
+                sendDataPacket(packet);
             }
             catch (Exception ex) 
             { 
@@ -148,8 +189,9 @@ namespace FacultyFeudClient
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            listener.Close();
             listenerThread.Abort();
+            listener.Close();
         }
+
     }
 }

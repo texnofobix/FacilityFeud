@@ -38,7 +38,8 @@ namespace FacultyFeudHost
         List<IPEndPoint> clients;
 
         playManage p;
-
+        
+        
         //port 7471 used by host
         //port 7472 used by client
 
@@ -83,15 +84,14 @@ namespace FacultyFeudHost
                     {
                         p.lftBox.BackColor = System.Drawing.Color.Green;
                         p.rtBox.BackColor = System.Drawing.Color.White;
-                        p.showWindow(true);
-                        //audience.audWnd.lftBox.Visibility = System.Windows.Visibility.Visible;
+                        //p.showWindow(true);
+                        //p.bLeftControl_Click(null, null);
                     }
                     else if (vals[1] == "1")
                     {
                         p.rtBox.BackColor = System.Drawing.Color.Green;
                         p.lftBox.BackColor = System.Drawing.Color.White;
-                        p.showWindow(false);
-                        //audience.audWnd.rtBox.Visibility = System.Windows.Visibility.Visible;
+                        //p.showWindow(false);
                     }
                 }
             }

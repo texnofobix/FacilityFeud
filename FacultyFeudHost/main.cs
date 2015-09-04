@@ -68,10 +68,16 @@ namespace FacultyFeudHost
 
         private void MainWindowForm_Activated(object sender, EventArgs e)
         {
-            if (QuestionManager.questions.Count != 0)
-                this.bLoadGameManager.Enabled = true;
-            else
-                this.bLoadGameManager.Enabled = false;
+            try { 
+                if (QuestionManager.questions.Count != 0)
+                    bLoadGameManager.Enabled = true;
+                else
+                    bLoadGameManager.Enabled = false;
+            }
+            catch
+            {
+                //
+            }
         }
     }
 }

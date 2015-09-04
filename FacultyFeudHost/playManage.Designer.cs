@@ -58,8 +58,8 @@ namespace FacultyFeudHost
             this.a_2 = new System.Windows.Forms.CheckBox();
             this.a_1 = new System.Windows.Forms.CheckBox();
             this.a_x = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.tmrBuzz = new System.Windows.Forms.Timer(this.components);
+            this.bResetClients = new System.Windows.Forms.Button();
             this.lftBox = new System.Windows.Forms.PictureBox();
             this.rtBox = new System.Windows.Forms.PictureBox();
             this.back = new System.Windows.Forms.Button();
@@ -75,6 +75,8 @@ namespace FacultyFeudHost
             this.cbPointsDoubled = new System.Windows.Forms.CheckBox();
             this.tbRoundScore = new System.Windows.Forms.TextBox();
             this.bEndRound = new System.Windows.Forms.Button();
+            this.tmrAnswer = new System.Windows.Forms.Timer(this.components);
+            this.bAnswerTimer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lftBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rtBox)).BeginInit();
@@ -244,20 +246,20 @@ namespace FacultyFeudHost
             this.a_x.UseVisualStyleBackColor = true;
             this.a_x.Click += new System.EventHandler(this.btn_Click);
             // 
-            // timer1
+            // tmrBuzz
             // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.tmrBuzz.Interval = 2000;
+            this.tmrBuzz.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // bResetClients
             // 
-            this.button1.Location = new System.Drawing.Point(284, 416);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 37);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Reset Clients";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btn_Click);
+            this.bResetClients.Location = new System.Drawing.Point(705, 365);
+            this.bResetClients.Name = "bResetClients";
+            this.bResetClients.Size = new System.Drawing.Size(65, 130);
+            this.bResetClients.TabIndex = 4;
+            this.bResetClients.Text = "Reset Clients";
+            this.bResetClients.UseVisualStyleBackColor = true;
+            this.bResetClients.Click += new System.EventHandler(this.btn_Click);
             // 
             // lftBox
             // 
@@ -267,6 +269,7 @@ namespace FacultyFeudHost
             this.lftBox.Size = new System.Drawing.Size(60, 50);
             this.lftBox.TabIndex = 6;
             this.lftBox.TabStop = false;
+            this.lftBox.BackColorChanged += new System.EventHandler(this.lftBox_BackColorChanged);
             // 
             // rtBox
             // 
@@ -276,6 +279,7 @@ namespace FacultyFeudHost
             this.rtBox.Size = new System.Drawing.Size(60, 50);
             this.rtBox.TabIndex = 5;
             this.rtBox.TabStop = false;
+            this.rtBox.BackColorChanged += new System.EventHandler(this.rtBox_BackColorChanged);
             // 
             // back
             // 
@@ -405,11 +409,27 @@ namespace FacultyFeudHost
             this.bEndRound.UseVisualStyleBackColor = true;
             this.bEndRound.Click += new System.EventHandler(this.bEndRound_Click);
             // 
+            // tmrAnswer
+            // 
+            this.tmrAnswer.Interval = 1000;
+            this.tmrAnswer.Tick += new System.EventHandler(this.tmrAnswer_Tick);
+            // 
+            // bAnswerTimer
+            // 
+            this.bAnswerTimer.Location = new System.Drawing.Point(624, 293);
+            this.bAnswerTimer.Name = "bAnswerTimer";
+            this.bAnswerTimer.Size = new System.Drawing.Size(113, 23);
+            this.bAnswerTimer.TabIndex = 18;
+            this.bAnswerTimer.Text = "Answer Timer";
+            this.bAnswerTimer.UseVisualStyleBackColor = true;
+            this.bAnswerTimer.Click += new System.EventHandler(this.bAnswerTimer_Click);
+            // 
             // playManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 521);
+            this.Controls.Add(this.bAnswerTimer);
             this.Controls.Add(this.bEndRound);
             this.Controls.Add(this.tbRoundScore);
             this.Controls.Add(this.cbPointsDoubled);
@@ -423,7 +443,7 @@ namespace FacultyFeudHost
             this.Controls.Add(this.tLeftScore);
             this.Controls.Add(this.lftBox);
             this.Controls.Add(this.rtBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bResetClients);
             this.Controls.Add(this.back);
             this.Controls.Add(this.next);
             this.Controls.Add(this.groupBox1);
@@ -456,8 +476,8 @@ namespace FacultyFeudHost
         private System.Windows.Forms.CheckBox a_3;
         private System.Windows.Forms.CheckBox a_2;
         private System.Windows.Forms.CheckBox a_1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer tmrBuzz;
+        private System.Windows.Forms.Button bResetClients;
         private System.Windows.Forms.Button b_x_s;
         public System.Windows.Forms.PictureBox rtBox;
         public System.Windows.Forms.PictureBox lftBox;
@@ -472,5 +492,7 @@ namespace FacultyFeudHost
         private System.Windows.Forms.CheckBox cbPointsDoubled;
         private System.Windows.Forms.TextBox tbRoundScore;
         private System.Windows.Forms.Button bEndRound;
+        private System.Windows.Forms.Timer tmrAnswer;
+        private System.Windows.Forms.Button bAnswerTimer;
     }
 }
